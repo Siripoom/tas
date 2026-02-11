@@ -65,6 +65,18 @@ This prevents Prisma `P1001` from trying to reach `db:5432` outside Docker netwo
 
 `npm run dev` and `npm run start` also auto-adjust those hosts when running outside Docker.
 
+## Deploy on Railway (Dockerfile)
+1. In Railway service settings, set `Root Directory` to `tas-backend`.
+2. Set builder to Dockerfile (Railway will use `tas-backend/Dockerfile`).
+3. Add environment variables from `.env` in Railway:
+   - required: `DATABASE_URL`, `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET`, `S3_ENDPOINT`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_BUCKET`
+   - optional defaults: `PORT` (Railway usually injects), `S3_REGION`, `S3_FORCE_PATH_STYLE`, `S3_USE_SSL`, `DEFAULT_PASSWORD`
+4. Ensure healthcheck path is `/health`.
+
+Note:
+- Docker Compose fields like `depends_on`, `env_file`, `ports`, and `networks` are replaced by Railway service/environment configuration.
+- Container startup still runs `prisma:deploy` and `db:seed` via `npm run start:docker`.
+
 ## Default Seed Accounts
 - superadmin / `ChangeMe123!`
 - teacher1 / `ChangeMe123!`
