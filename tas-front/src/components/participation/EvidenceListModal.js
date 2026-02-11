@@ -16,7 +16,7 @@ const statusConfig = {
   COMPLETED: { color: "#0A894C", text: "เสร็จสิ้น" },
 };
 
-const isActionableStatus = (status) => ["APPLIED", "REVISION_REQUIRED"].includes(status);
+const isActionableStatus = (status) => ["APPLIED", "REVISION_REQUIRED", "APPROVED"].includes(status);
 
 const fileLabel = (file) => {
   if (file.fileType === "PDF" || file.mimeType === "application/pdf") return "PDF";

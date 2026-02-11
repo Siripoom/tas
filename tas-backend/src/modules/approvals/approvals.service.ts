@@ -244,7 +244,11 @@ export async function approveApplication(actor: Actor, applicationId: string, re
     throw new ApiError(404, "404_NOT_FOUND", "Application not found");
   }
 
-  if (application.status !== "APPLIED" && application.status !== "REVISION_REQUIRED") {
+  if (
+    application.status !== "APPLIED" &&
+    application.status !== "REVISION_REQUIRED" &&
+    application.status !== "APPROVED"
+  ) {
     throw new ApiError(422, "422_INVALID_STATUS_TRANSITION", "Application is not pending");
   }
 
@@ -283,7 +287,7 @@ export async function requestApplicationRevision(actor: Actor, applicationId: st
     throw new ApiError(404, "404_NOT_FOUND", "Application not found");
   }
 
-  if (application.status !== "APPLIED") {
+  if (application.status !== "APPLIED" && application.status !== "APPROVED") {
     throw new ApiError(422, "422_INVALID_STATUS_TRANSITION", "Application cannot request revision");
   }
 

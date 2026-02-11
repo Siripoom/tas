@@ -332,7 +332,8 @@ const statusConfig = {
 };
 const isActionableStatus = (status)=>[
         "APPLIED",
-        "REVISION_REQUIRED"
+        "REVISION_REQUIRED",
+        "APPROVED"
     ].includes(status);
 const fileLabel = (file)=>{
     if (file.fileType === "PDF" || file.mimeType === "application/pdf") return "PDF";

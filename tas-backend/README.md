@@ -73,6 +73,9 @@ This prevents Prisma `P1001` from trying to reach `db:5432` outside Docker netwo
 
 ## Notes
 - Upload rule is enforced: maximum 3 images or 1 PDF per owner (`APPLICATION` or `RECORD`).
+- Application approval transitions:
+  - `POST /api/approvals/:applicationId/approve` accepts `APPLIED`, `REVISION_REQUIRED`, `APPROVED` (idempotent reconfirm for `APPROVED`).
+  - `POST /api/approvals/:applicationId/request-revision` accepts `APPLIED`, `APPROVED`.
 - Cron job generates notifications every hour.
 - API uses UTC datetime in ISO-8601.
 
