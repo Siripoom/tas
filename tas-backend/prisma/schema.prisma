@@ -1,0 +1,378 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  DEPT_STAFF
+  FACULTY_ADMIN
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  LOCKED
+}
+
+enum StaffType {
+  DEPT_STAFF
+  FACULTY_ADMIN
+}
+
+enum OwnerScope {
+  FACULTY
+  DEPARTMENT
+}
+
+enum RequiredEvidenceType {
+  PHOTO
+  PDF
+  BOTH
+}
+
+enum ActivityStatus {
+  OPEN_REGISTRATION
+  IN_PROGRESS
+  CLOSED
+  CANCELLED
+}
+
+enum ApplicationStatus {
+  APPLIED
+  APPROVED
+  REJECTED
+  CANCELLED
+  NO_SHOW
+  REVISION_REQUIRED
+}
+
+enum RecordStatus {
+  DRAFT
+  SUBMITTED
+  REVISION_REQUIRED
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+enum EvidenceOwnerType {
+  APPLICATION
+  RECORD
+}
+
+enum EvidenceFileType {
+  IMAGE
+  PDF
+}
+
+enum NotificationType {
+  ACTIVITY_NEAR_DUE
+  ACTIVITY_NOT_JOINED
+  SYSTEM
+}
+
+model Faculty {
+  id              String           @id @default(uuid())
+  code            String           @unique
+  name            String
+  departments     Department[]
+  studentProfiles StudentProfile[]
+  teacherProfiles TeacherProfile[]
+  staffProfiles   StaffProfile[]
+  activities      Activity[]       @relation("ActivityFacultyOwner")
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Department {
+  id              String           @id @default(uuid())
+  code            String
+  name            String
+  facultyId       String
+  faculty         Faculty          @relation(fields: [facultyId], references: [id], onDelete: Restrict)
+  majors          Major[]
+  studentProfiles StudentProfile[]
+  teacherProfiles TeacherProfile[]
+  staffProfiles   StaffProfile[]
+  activities      Activity[]       @relation("ActivityDepartmentOwner")
+  targetActivities ActivityTargetDepartment[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@unique([facultyId, code])
+}
+
+model Major {
+  id              String           @id @default(uuid())
+  code            String
+  name            String
+  departmentId    String
+  department      Department       @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  studentProfiles StudentProfile[]
+  targetActivities ActivityTargetMajor[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@unique([departmentId, code])
+}
+
+model User {
+  id               String                @id @default(uuid())
+  username         String?               @unique
+  email            String?               @unique
+  passwordHash     String
+  firstName        String
+  lastName         String
+  phone            String?
+  profileImageUrl  String?
+  role             UserRole
+  status           UserStatus            @default(ACTIVE)
+  lastLoginAt      DateTime?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  studentProfile   StudentProfile?
+  teacherProfile   TeacherProfile?
+  staffProfile     StaffProfile?
+  refreshTokens    RefreshToken[]
+  createdActivities Activity[]           @relation("ActivityCreatedBy")
+  applications     ActivityApplication[] @relation("ApplicationStudent")
+  applicationDecisions ActivityApplication[] @relation("ApplicationDecidedBy")
+  records          StudentActivityRecord[] @relation("RecordStudent")
+  recordReviews    StudentActivityRecord[] @relation("RecordReviewedBy")
+  evidenceFiles    EvidenceFile[]
+  notifications    Notification[]
+}
+
+model StudentProfile {
+  id               String    @id @default(uuid())
+  userId           String    @unique
+  studentCode      String    @unique
+  facultyId        String
+  departmentId     String
+  majorId          String
+  classYear        Int
+  academicYear     Int
+  registrarVerified Boolean  @default(false)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  faculty          Faculty   @relation(fields: [facultyId], references: [id], onDelete: Restrict)
+  department       Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  major            Major     @relation(fields: [majorId], references: [id], onDelete: Restrict)
+
+  @@index([facultyId, departmentId, majorId])
+}
+
+model TeacherProfile {
+  id           String    @id @default(uuid())
+  userId       String    @unique
+  employeeCode String?   @unique
+  facultyId    String
+  departmentId String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  faculty      Faculty   @relation(fields: [facultyId], references: [id], onDelete: Restrict)
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+}
+
+model StaffProfile {
+  id           String    @id @default(uuid())
+  userId       String    @unique
+  staffType    StaffType
+  facultyId    String
+  departmentId String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  faculty      Faculty   @relation(fields: [facultyId], references: [id], onDelete: Restrict)
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+}
+
+model RegistrarStudent {
+  id            String   @id @default(uuid())
+  studentCode   String   @unique
+  firstName     String
+  lastName      String
+  email         String?
+  facultyCode   String
+  facultyName   String
+  departmentCode String
+  departmentName String
+  majorCode     String
+  majorName     String
+  classYear     Int
+  academicYear  Int
+  isActive      Boolean  @default(true)
+  importedAt    DateTime @default(now())
+}
+
+model Activity {
+  id                  String              @id @default(uuid())
+  title               String
+  startAt             DateTime
+  endAt               DateTime
+  location            String
+  hours               Int
+  requiredEvidenceType RequiredEvidenceType
+  activityTypeId      String?
+  capacity            Int
+  applyOpenAt         DateTime
+  applyCloseAt        DateTime
+  note                String?
+  ownerScope          OwnerScope
+  ownerFacultyId      String?
+  ownerDepartmentId   String?
+  status              ActivityStatus      @default(OPEN_REGISTRATION)
+  createdById         String
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  ownerFaculty        Faculty?            @relation("ActivityFacultyOwner", fields: [ownerFacultyId], references: [id], onDelete: SetNull)
+  ownerDepartment     Department?         @relation("ActivityDepartmentOwner", fields: [ownerDepartmentId], references: [id], onDelete: SetNull)
+  activityType        ActivityType?       @relation(fields: [activityTypeId], references: [id], onDelete: SetNull)
+  createdBy           User                @relation("ActivityCreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+  applications        ActivityApplication[]
+  targetDepartments   ActivityTargetDepartment[]
+  targetMajors        ActivityTargetMajor[]
+
+  @@index([status, startAt])
+  @@index([ownerDepartmentId])
+  @@index([ownerFacultyId])
+  @@index([activityTypeId])
+}
+
+model ActivityType {
+  id         String     @id @default(uuid())
+  code       String     @unique
+  name       String     @unique
+  activities Activity[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model ActivityTargetDepartment {
+  id           String     @id @default(uuid())
+  activityId   String
+  departmentId String
+  createdAt    DateTime   @default(now())
+
+  activity     Activity   @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+
+  @@unique([activityId, departmentId])
+  @@index([departmentId])
+}
+
+model ActivityTargetMajor {
+  id         String   @id @default(uuid())
+  activityId String
+  majorId    String
+  createdAt  DateTime @default(now())
+
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  major      Major    @relation(fields: [majorId], references: [id], onDelete: Restrict)
+
+  @@unique([activityId, majorId])
+  @@index([majorId])
+}
+
+model ActivityApplication {
+  id            String            @id @default(uuid())
+  activityId    String
+  studentUserId String
+  status        ApplicationStatus @default(APPLIED)
+  submittedAt   DateTime          @default(now())
+  decidedById   String?
+  decidedAt     DateTime?
+  remark        String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  activity      Activity          @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  student       User              @relation("ApplicationStudent", fields: [studentUserId], references: [id], onDelete: Cascade)
+  decidedBy     User?             @relation("ApplicationDecidedBy", fields: [decidedById], references: [id], onDelete: SetNull)
+
+  @@unique([activityId, studentUserId])
+  @@index([status])
+}
+
+model StudentActivityRecord {
+  id                 String      @id @default(uuid())
+  studentUserId      String
+  title              String
+  joinStart          DateTime
+  joinEnd            DateTime
+  location           String
+  hours              Int
+  note               String?
+  status             RecordStatus @default(DRAFT)
+  lockedWhenApproved Boolean     @default(false)
+  submittedAt        DateTime?
+  reviewedById       String?
+  reviewedAt         DateTime?
+  remark             String?
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  student            User        @relation("RecordStudent", fields: [studentUserId], references: [id], onDelete: Cascade)
+  reviewedBy         User?       @relation("RecordReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([studentUserId, status])
+}
+
+model EvidenceFile {
+  id           String            @id @default(uuid())
+  ownerType    EvidenceOwnerType
+  ownerId      String
+  fileType     EvidenceFileType
+  objectKey    String            @unique
+  originalName String
+  mimeType     String
+  sizeBytes    Int
+  checksum     String?
+  uploadedById String
+  uploadedAt   DateTime          @default(now())
+  createdAt    DateTime          @default(now())
+
+  uploadedBy   User              @relation(fields: [uploadedById], references: [id], onDelete: Restrict)
+
+  @@index([ownerType, ownerId])
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  type      NotificationType
+  payload   Json
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

@@ -1,0 +1,100 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tas-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tas_db
+      POSTGRES_USER: tas_user
+      POSTGRES_PASSWORD: tas_pass
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tas_user -d tas_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - tas-net
+
+  minio:
+    image: minio/minio:latest
+    container_name: tas-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - tas-net
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: tas-minio-init
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      until mc alias set local http://minio:9000 minioadmin minioadmin; do sleep 2; done;
+      mc mb --ignore-existing local/tas-evidence;
+      mc anonymous set private local/tas-evidence;
+      echo 'MinIO bucket initialized.';
+      "
+    networks:
+      - tas-net
+
+  # api:
+  #   build:
+  #     context: ./tas-backend
+  #     dockerfile: Dockerfile
+  #   container_name: tas-api
+  #   restart: unless-stopped
+  #   env_file:
+  #     - ./tas-backend/.env
+  #   ports:
+  #     - "${API_PORT:-4556}:4556"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #     minio:
+  #       condition: service_started
+  #     minio-init:
+  #       condition: service_completed_successfully
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "wget -qO- http://localhost:4556/health || exit 1"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 10
+  #   networks:
+  #     - tas-net
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: tas-pgadmin
+    restart: unless-stopped
+    profiles: ["devtools"]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@tas.local
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - tas-net
+
+volumes:
+  pg_data:
+  minio_data:
+
+networks:
+  tas-net:
+    name: tas-net

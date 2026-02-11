@@ -1,0 +1,6 @@
+{
+  "/student/home/page": "app/student/home/page.js",
+  "/student/participation/page": "app/student/participation/page.js",
+  "/teacher/event/page": "app/teacher/event/page.js",
+  "/teacher/participation/page": "app/teacher/participation/page.js"
+}

@@ -1,0 +1,170 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/admin/activity-type",
+      "regex": "^/admin/activity\\-type(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/activity\\-type(?:/)?$"
+    },
+    {
+      "page": "/admin/department",
+      "regex": "^/admin/department(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/department(?:/)?$"
+    },
+    {
+      "page": "/admin/event",
+      "regex": "^/admin/event(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/event(?:/)?$"
+    },
+    {
+      "page": "/admin/home",
+      "regex": "^/admin/home(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/home(?:/)?$"
+    },
+    {
+      "page": "/admin/participation",
+      "regex": "^/admin/participation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/participation(?:/)?$"
+    },
+    {
+      "page": "/admin/profile",
+      "regex": "^/admin/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/profile(?:/)?$"
+    },
+    {
+      "page": "/admin/report",
+      "regex": "^/admin/report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/report(?:/)?$"
+    },
+    {
+      "page": "/admin/user",
+      "regex": "^/admin/user(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/user(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/student/home",
+      "regex": "^/student/home(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/student/home(?:/)?$"
+    },
+    {
+      "page": "/student/participation",
+      "regex": "^/student/participation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/student/participation(?:/)?$"
+    },
+    {
+      "page": "/student/profile",
+      "regex": "^/student/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/student/profile(?:/)?$"
+    },
+    {
+      "page": "/teacher/event",
+      "regex": "^/teacher/event(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/teacher/event(?:/)?$"
+    },
+    {
+      "page": "/teacher/home",
+      "regex": "^/teacher/home(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/teacher/home(?:/)?$"
+    },
+    {
+      "page": "/teacher/participation",
+      "regex": "^/teacher/participation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/teacher/participation(?:/)?$"
+    },
+    {
+      "page": "/teacher/profile",
+      "regex": "^/teacher/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/teacher/profile(?:/)?$"
+    },
+    {
+      "page": "/teacher/report",
+      "regex": "^/teacher/report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/teacher/report(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

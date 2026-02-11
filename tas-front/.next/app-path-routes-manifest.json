@@ -1,0 +1,23 @@
+{
+  "/(auth)/login/page": "/login",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/activity-type/page": "/admin/activity-type",
+  "/admin/department/page": "/admin/department",
+  "/admin/event/page": "/admin/event",
+  "/admin/home/page": "/admin/home",
+  "/admin/participation/page": "/admin/participation",
+  "/admin/profile/page": "/admin/profile",
+  "/admin/report/page": "/admin/report",
+  "/admin/user/page": "/admin/user",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/student/home/page": "/student/home",
+  "/student/participation/page": "/student/participation",
+  "/student/profile/page": "/student/profile",
+  "/teacher/event/page": "/teacher/event",
+  "/teacher/home/page": "/teacher/home",
+  "/teacher/participation/page": "/teacher/participation",
+  "/teacher/profile/page": "/teacher/profile",
+  "/teacher/report/page": "/teacher/report"
+}

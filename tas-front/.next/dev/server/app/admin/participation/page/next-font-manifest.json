@@ -1,0 +1,12 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/src/app/admin/participation/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

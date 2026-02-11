@@ -1,0 +1,124 @@
+[00:00:01.388] Server  LOG      ✓ Ready in 980ms
+[00:00:06.689] Server  LOG      ○ Compiling /teacher/participation ...
+[00:00:11.353] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:15:05.009] Server  LOG      ○ Compiling /student/participation ...
+[00:15:08.807] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:09.462] Browser LOG     User Data: {"department":{"code":"CT","createdAt":"2026-02-10T15:59:28.617Z","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","id":"d6f1240d-c436-423c-b135-52e4fe74bfeb","name":"ภาควิชาคอมพิวเตอร์ศึกษา","updatedAt":"2026-02-10T15:59:28.617Z"},"departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","departmentName":"ภาควิชาคอมพิวเตอร์ศึกษา","email":"s@gmail.com","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","facultyName":"คณะครุศาสตร์อุตสาหกรรม","firstName":"Poom","fullname":"Poom Artorsirirat","id":"38e79776-31f1-4e65-8121-822c7b72efe3","lastName":"Artorsirirat","level":1,"major":{"code":"TCT","createdAt":"2026-02-10T16:07:00.633Z","departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","id":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"สาขาวิชาเทคโนโลยีคอมพิวเตอร์","updatedAt":"2026-02-10T16:07:29.505Z"},"majorId":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"Poom Artorsirirat","phone":null,"role":"STUDENT","status":"ACTIVE","studentId":"6602041510088","userType":"student","username":"std"}
+[00:15:09.580] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:15:25.920] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/teacher/p..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="th">
+                          <body
+                            className="noto_sans_thai_e71ae5c3-module__K-aCDa__variable nunito_sans_21078816-module__D..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:15:26.089] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:01.674] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:01.872] Browser LOG     User Data: {"department":{"code":"CT","createdAt":"2026-02-10T15:59:28.617Z","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","id":"d6f1240d-c436-423c-b135-52e4fe74bfeb","name":"ภาควิชาคอมพิวเตอร์ศึกษา","updatedAt":"2026-02-10T15:59:28.617Z"},"departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","departmentName":"ภาควิชาคอมพิวเตอร์ศึกษา","email":"s@gmail.com","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","facultyName":"คณะครุศาสตร์อุตสาหกรรม","firstName":"Poom","fullname":"Poom Artorsirirat","id":"38e79776-31f1-4e65-8121-822c7b72efe3","lastName":"Artorsirirat","level":1,"major":{"code":"TCT","createdAt":"2026-02-10T16:07:00.633Z","departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","id":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"สาขาวิชาเทคโนโลยีคอมพิวเตอร์","updatedAt":"2026-02-10T16:07:29.505Z"},"majorId":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"Poom Artorsirirat","phone":null,"role":"STUDENT","status":"ACTIVE","studentId":"6602041510088","userType":"student","username":"std"}
+[00:16:02.104] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:16.690] Browser ERROR   Warning: [antd: Alert] `message` is deprecated. Please use `title` instead.
+[00:16:34.236] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/teacher/p..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="th">
+                          <body
+                            className="noto_sans_thai_e71ae5c3-module__K-aCDa__variable nunito_sans_21078816-module__D..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:16:34.658] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:47.104] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:47.256] Browser LOG     User Data: {"department":{"code":"CT","createdAt":"2026-02-10T15:59:28.617Z","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","id":"d6f1240d-c436-423c-b135-52e4fe74bfeb","name":"ภาควิชาคอมพิวเตอร์ศึกษา","updatedAt":"2026-02-10T15:59:28.617Z"},"departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","departmentName":"ภาควิชาคอมพิวเตอร์ศึกษา","email":"s@gmail.com","facultyId":"caffaf8c-87a1-4b58-9790-4d4094465fbe","facultyName":"คณะครุศาสตร์อุตสาหกรรม","firstName":"Poom","fullname":"Poom Artorsirirat","id":"38e79776-31f1-4e65-8121-822c7b72efe3","lastName":"Artorsirirat","level":1,"major":{"code":"TCT","createdAt":"2026-02-10T16:07:00.633Z","departmentId":"d6f1240d-c436-423c-b135-52e4fe74bfeb","id":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"สาขาวิชาเทคโนโลยีคอมพิวเตอร์","updatedAt":"2026-02-10T16:07:29.505Z"},"majorId":"be44325e-c4e6-41da-ab33-9675dcf7c188","name":"Poom Artorsirirat","phone":null,"role":"STUDENT","status":"ACTIVE","studentId":"6602041510088","userType":"student","username":"std"}
+[00:16:47.462] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:17:27.768] Browser ERROR   Warning: [antd: Alert] `message` is deprecated. Please use `title` instead.
+[00:20:04.698] Server  LOG      ✓ Compiled in 387ms
+[00:21:27.368] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/teacher/p..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="th">
+                          <body
+                            className="noto_sans_thai_e71ae5c3-module__K-aCDa__variable nunito_sans_21078816-module__D..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:21:27.587] Browser WARN    Image with src "/Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.

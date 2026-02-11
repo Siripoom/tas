@@ -1,0 +1,23 @@
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/activity-type/page": "app/admin/activity-type/page.js",
+  "/admin/department/page": "app/admin/department/page.js",
+  "/admin/event/page": "app/admin/event/page.js",
+  "/admin/home/page": "app/admin/home/page.js",
+  "/admin/participation/page": "app/admin/participation/page.js",
+  "/admin/profile/page": "app/admin/profile/page.js",
+  "/admin/report/page": "app/admin/report/page.js",
+  "/admin/user/page": "app/admin/user/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/student/home/page": "app/student/home/page.js",
+  "/student/participation/page": "app/student/participation/page.js",
+  "/student/profile/page": "app/student/profile/page.js",
+  "/teacher/event/page": "app/teacher/event/page.js",
+  "/teacher/home/page": "app/teacher/home/page.js",
+  "/teacher/participation/page": "app/teacher/participation/page.js",
+  "/teacher/profile/page": "app/teacher/profile/page.js",
+  "/teacher/report/page": "app/teacher/report/page.js"
+}
