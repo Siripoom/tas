@@ -1,5 +1,40 @@
 {
   "app": {
+    "[project]/src/app/(auth)/login/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/admin/activity-type/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/admin/department/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/admin/event/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/admin/home/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/admin/participation/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
     "[project]/src/app/student/home/page": [
       "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
       "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
@@ -11,6 +46,11 @@
       "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
     ],
     "[project]/src/app/teacher/event/page": [
+      "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
+      "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
+      "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"
+    ],
+    "[project]/src/app/teacher/home/page": [
       "static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2",
       "static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2",
       "static/media/f141b5b7abe57afc-s.p.0de3c900.woff2"

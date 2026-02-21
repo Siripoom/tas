@@ -617,8 +617,16 @@ const getAllFaculties = async ()=>{
 };
 const getMajorsByDepartment = async (departmentId)=>{
     if (!departmentId) return [];
-    const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$apiClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`/departments/${departmentId}/majors`);
-    return Array.isArray(response.data) ? response.data : [];
+    try {
+        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$apiClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`/departments/${departmentId}/majors`);
+        return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+        if (isAuthzError(error)) {
+            const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$apiClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`/activities/departments/${departmentId}/majors`);
+            return Array.isArray(response.data) ? response.data : [];
+        }
+        throw error;
+    }
 };
 const createMajor = async (departmentId, payload)=>{
     const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$apiClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post(`/departments/${departmentId}/majors`, payload);
